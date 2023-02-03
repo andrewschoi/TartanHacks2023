@@ -1,8 +1,13 @@
 export const pages = [
   {
-    title: 'Supporting Pages',
+    title: 'Explore',
     id: 'supporting-pages',
     pages: [
+      {
+        title: 'Home',
+        href: '/',
+      },
+
       {
         title: 'About',
         href: '/page-about',
@@ -20,10 +25,6 @@ export const pages = [
       {
         title: ' Contract Analysis',
         href: '/contract-analysis',
-      },
-      {
-        title: 'Not Found',
-        href: '/page-not-found',
       },
     ],
   },

@@ -1,48 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Container from 'common/Container';
 
-const Introduction = ({ themeMode = 'light' }) => {
+const Introduction = () => {
   return (
     <Box>
       <Container>
         <Box>
-          <Typography
-            sx={{
-              textTransform: 'uppercase',
-              fontWeight: 'medium',
-            }}
-            gutterBottom
-            align={'center'}
-            color={'textSecondary'}
-          >
-            Introduction
-          </Typography>
-          <Typography
-            variant="h4"
-            align={'center'}
-            sx={{
-              fontWeight: 700,
-            }}
-          >
-            Webbee - multipurpose template and UI kit
-          </Typography>
-          <Box
-            component={LazyLoadImage}
-            height={'100%'}
-            width={'100%'}
-            src={`https://assets.maccarianagency.com/screenshots/screens-masonry${
-              themeMode === 'dark' ? '--dark' : ''
-            }.png`}
-            alt="Webbee"
-            effect="blur"
-            maxWidth={'100%'}
-            marginY={4}
-          />
           <Box>
             <Typography gutterBottom>
               Webbe UI Kit is built with{' '}
