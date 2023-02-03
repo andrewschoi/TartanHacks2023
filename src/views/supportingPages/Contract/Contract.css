@@ -1,0 +1,83 @@
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #f7f9fc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.field {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  font-family: 'system-ui';
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: box-shadow 0.3s, border 0.3s;
+  width: 100%;
+}
+
+@keyframes border-pulsate {
+  0% {
+    border-color: #00AB55;
+  }
+
+  50% {
+    border-color: #166b42;
+  }
+
+  100% {
+    border-color: #00AB55;
+  }
+}
+
+.field {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #00AB55;
+  border-radius: 5px;
+  animation: border-pulsate 2s infinite;
+}
+
+
+.field:focus {
+  border-color: #000000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.cursor {
+  position: relative;
+}
+
+.cursor i {
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: gray;
+  left: 5px;
+  top: 10%;
+  animation-name: blink;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+.cursor input:focus+i {
+  display: none;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
