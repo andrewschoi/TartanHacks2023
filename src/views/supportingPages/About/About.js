@@ -8,17 +8,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import cuad from 'utils/utils';
-// import cuad from '../../../utils/utils.js';
+import cuad, { commonQuestions } from '../../../utils/utils.js';
+
+function removeSpecialCharacters(str) {
+  return str.replace(/[^\w\s]/gi, '');
+}
+
+function removeQuotes(str) {
+  return str.replace(/['"]/g, '');
+}
 
 async function parseText(text) {
-  let questions = [
-    'Which name is also used to describe the Amazon rainforest in English?',
-  ];
   let ans = {};
-
-  const promises = questions.map(async (q) => {
-    return cuad({ question: q, context: text }).then((res) => {
+  const context = removeSpecialCharacters(removeQuotes(text));
+  const promises = commonQuestions.map(async (q) => {
+    return cuad({ question: q, context: context }).then((res) => {
       const { start, end } = res;
       ans[q] = [start, end];
       return ans;
