@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
 const Footer = () => (
@@ -15,18 +14,6 @@ const Footer = () => (
         flexDirection={{ xs: 'column', sm: 'row' }}
       >
         <Box display="flex" flexWrap={'wrap'} alignItems={'center'}>
-          <Box marginTop={1} marginRight={2}>
-            <Link
-              underline="none"
-              component="a"
-              href="/"
-              color="textPrimary"
-              variant={'subtitle2'}
-            >
-              Home
-            </Link>
-          </Box>
-
         </Box>
       </Box>
     </Grid>

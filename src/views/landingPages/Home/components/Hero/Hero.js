@@ -45,8 +45,8 @@ const Hero = () => {
               color="textSecondary"
               sx={{ fontWeight: 400 }}
             >
-              Analyze legal documents, contracts, and agreement at <br />
-              <strong>zero cost...</strong>
+              Analyze legal documents, contracts, and agreements at <br />
+              <strong>zero cost</strong>
             </Typography>
           </Box>
           <Box
