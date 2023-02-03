@@ -1,6 +1,6 @@
 export const pages = [
   {
-    title: 'Supporting Pages',
+    title: 'Explore',
     id: 'supporting-pages',
     pages: [
       {
