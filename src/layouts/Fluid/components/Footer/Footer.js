@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import WebbeeLogo from 'svg/logos/Webbee';
 
 const Footer = () => (
   <Grid container spacing={2}>
@@ -15,17 +14,6 @@ const Footer = () => (
         width={'100%'}
         flexDirection={{ xs: 'column', sm: 'row' }}
       >
-        <Box
-          display={'flex'}
-          component="a"
-          underline="none"
-          href="/"
-          title="webbee"
-          height={24}
-          width={35}
-        >
-          <WebbeeLogo height={'100%'} width={'100%'} />
-        </Box>
         <Box display="flex" flexWrap={'wrap'} alignItems={'center'}>
           <Box marginTop={1} marginRight={2}>
             <Link
@@ -49,18 +37,7 @@ const Footer = () => (
         color="textSecondary"
         gutterBottom
       >
-        &copy; Webbee. 2021, Maccarian. All rights reserved
-      </Typography>
-      <Typography
-        align={'center'}
-        variant={'caption'}
-        color="textSecondary"
-        component={'p'}
-      >
-        When you visit or interact with our sites, services or tools, we or our
-        authorised service providers may use cookies for storing information to
-        help provide you with a better, faster and safer experience and for
-        marketing purposes.
+        &copy; ContractShield. 2023
       </Typography>
     </Grid>
   </Grid>

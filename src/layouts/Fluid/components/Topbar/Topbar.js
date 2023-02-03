@@ -6,7 +6,6 @@ import { useTheme } from '@mui/material/styles';
 import { colors } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import WebbeeLogo from 'svg/logos/Webbee';
 import paletteTypes from 'common/paletteTypes';
 
 const Topbar = ({
@@ -29,18 +28,6 @@ const Topbar = ({
           <IconButton onClick={onSidebarOpen} aria-label="Menu">
             <MenuIcon />
           </IconButton>
-        </Box>
-        <Box
-          display={'flex'}
-          alignItems="baseline"
-          component="a"
-          underline="none"
-          href="/"
-          title="webbee"
-          height={{ xs: 28, md: 32 }}
-          width={45}
-        >
-          <WebbeeLogo height={'100%'} width={'100%'} />
         </Box>
       </Box>
       <Box display="flex" alignItems={'center'}>
