@@ -20,7 +20,7 @@ const Hero = () => {
     <Grid container spacing={4}>
       <Grid item container alignItems={'center'} xs={12} md={6} style={{ marginTop: '50px' }}>
         <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-          <Box marginBottom={2} >
+          <Box marginBottom={2} style={{ backgroundColor: 'white' }}>
             <Typography
               variant="h2"
               color="textPrimary"
