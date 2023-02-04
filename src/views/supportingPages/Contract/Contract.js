@@ -134,8 +134,10 @@ const Contract = () => {
           variant="outlined"
           style={{
             height: '100%',
-            backgroundColor: 'white',
+            color: 'white',
+            borderColor: 'white',
             fontSize: '20px',
+            fontWeight: '400',
             borderRadius: '4px',
             verticalAlign: 'middle',
           }}

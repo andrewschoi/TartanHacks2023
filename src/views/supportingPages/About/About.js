@@ -298,7 +298,7 @@ const About = () => {
             Back
           </Button>
           <div style={{ width: '100%' }}></div>
-          {next && showNext ? (
+          {(1 == 1) || (next && !showNext) ? (
             <></>
           ) : (
             <Button
