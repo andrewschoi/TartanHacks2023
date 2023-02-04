@@ -23,8 +23,9 @@ export default async function cuad({ question, context }) {
   return JSON.parse(data);
 }
 
+const API_KEY = 'insert key';
+
 export async function modelQuestion({ question, context }) {
-  const API_KEY = 'insert key';
 
   const response = await fetch(
     'https://api.openai.com/v1/engines/davinci/completions',
@@ -45,6 +46,27 @@ export async function modelQuestion({ question, context }) {
     },
   );
   const data = await response.json();
-  console.log(data);
   return data['choices'][0].text;
+}
+
+export async function importantNotes({ context }) {
+
+  const response = await fetch(
+    'https://api.openai.com/v1/engines/davinci/completions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt:
+          'The following is a legal document. Please restate the three most important sentences FROM the document in clear English: ' +
+          context.substring(Math.min(1900, context.length)),
+        max_tokens: 50,
+      }),
+    },
+  );
+  const data = await response.json();
+  return (data['choices'][0].text.replace(/[^\w\s]/gi, '')).replace('_', '');
 }

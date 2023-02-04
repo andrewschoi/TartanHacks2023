@@ -10,7 +10,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import cuad, { commonQuestions } from '../../../utils/utils.js';
 import { motion } from 'framer-motion';
-import { modelQuestion } from '../../../utils/utils.js';
+import { modelQuestion, importantNotes } from '../../../utils/utils.js';
 
 function removeSpecialCharacters(str) {
   return str.replace(/[^\w\s]/gi, '');
@@ -45,22 +45,25 @@ const About = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const [showNext, setShowNext] = useState(false);
+  const [next, setNext] = useState(false);
   const [clauses, setClauses] = useState({});
-  const [emphasis, setEmphasis] = useState([]);
+  const [emphasis, setEmphasis] = useState('');
 
   const parseText = async (text) => {
     let ans = {};
     const context = removeSpecialCharacters(removeQuotes(text));
     //console.log(context);
     if (context.substring(0, 22) === 'Today February 24 2021') {
+      setShowNext(true);
       ans['Are the provisions in the document enforceable and legally binding?'] = 'In general, a power of attorney is a legally binding document that grants an individual (the attorney-in-fact or agent) the authority to act on behalf of another individual (the principal). If the power of attorney is properly executed and meets all the legal requirements in the jurisdiction in which it was signed, its provisions are typically considered enforceable and legally binding.';
       ans['What is the purpose of the document?'] = 'The purpose of the document is to grant authority to a representative (Christos Kgogos) to act on behalf of the principal (Athanasios Karras) in various legal matters. The representative has the power to provide required supporting documents, sign and submit necessary certificates, represent Athanasios Karras in court, and take any legal measures necessary to fulfill the mandate of the power of attorney.';
       ans['Does the document contain any ambiguous or unclear language that could be interpreted differently?'] = 'The document does not specify the scope or duration of the representative\'s authority, which could lead to confusion about how long the representative has the power to act on behalf of the principal.';
 
-      const promises = commonQuestions.map(async (q) => {
-        return cuad({ question: q, context: context }).then((res) => {
-          const { start, end } = res;
-          setEmphasis(emphasis + [start, end]);
+      const promises = commonQuestions.map(async () => {
+        return importantNotes({ context: context }).then((res) => {
+          const imp = res;
+          setEmphasis(emphasis + imp);
           //emphasis.add([start, end]);
           //ans[q] = context.substring(start, end);
         });
@@ -68,7 +71,7 @@ const About = () => {
 
       await Promise.all(promises).then(() => {
         setClauses(ans);
-        console.log(emphasis);
+        //console.log(emphasis);
       });
 
     } else if (context.substring(0, 13) === 'Our Agreement') {
@@ -80,7 +83,7 @@ const About = () => {
         return cuad({ question: q, context: context }).then((res) => {
           const { start, end } = res;
           setEmphasis(emphasis + [start, end]);
-          console.log(context.substring(start, end + 1));
+          //console.log(context.substring(start, end + 1));
           //emphasis.add([start, end]);
           //ans[q] = context.substring(start, end);
         });
@@ -88,7 +91,7 @@ const About = () => {
 
       await Promise.all(promises).then(() => {
         setClauses(ans);
-        console.log(emphasis);
+        //console.log(emphasis);
       });
 
     } else if (context.substring(0, 5) === 'GREAT') {
@@ -100,7 +103,7 @@ const About = () => {
         return cuad({ question: q, context: context }).then((res) => {
           const { start, end } = res;
           setEmphasis(emphasis + [start, end]);
-          console.log(context.substring(start, end + 1));
+          //console.log(context.substring(start, end + 1));
           //emphasis.add([start, end]);
           //ans[q] = context.substring(start, end);
         });
@@ -108,14 +111,14 @@ const About = () => {
 
       await Promise.all(promises).then(() => {
         setClauses(ans);
-        console.log(emphasis);
+        //console.log(emphasis);
       });
 
     } else {
       const promises = commonQuestions.map(async (q) => {
         return modelQuestion({ question: q, context: context }).then((res) => {
           //const { start, end } = res;
-          console.log(res);
+          //console.log(res);
           ans[q] = res;//context.substring(start, end);
         });
       });
@@ -175,27 +178,54 @@ const About = () => {
                     </div>
                   ) : (
                     <div>
-                      <Typography
-                        variant={'h3'}
-                        gutterBottom
-                        sx={{
-                          fontWeight: 700,
-                          color: theme.palette.common.white,
-                        }}
-                      >
-                        Here&apos;s what we found...
-                      </Typography>
-                      <Typography
-                        gutterBottom
-                        sx={{
-                          color: theme.palette.common.white,
-                        }}
-                      >
-                        <strong>
-                          We looked for important legal clauses, deadlines, and
-                          more...
-                        </strong>
-                      </Typography>
+                      {next ? (
+                        <div>
+                          <Typography
+                            variant={'h3'}
+                            gutterBottom
+                            sx={{
+                              fontWeight: 700,
+                              color: theme.palette.common.white,
+                            }}
+                          >
+                            What we think you should know...
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            sx={{
+                              color: theme.palette.common.white,
+                            }}
+                          >
+                            <strong>
+                              We looked for important legal clauses, deadlines, and
+                              more...
+                            </strong>
+                          </Typography>
+                        </div>
+                      ) : (
+                        <div>
+                          <Typography
+                            variant={'h3'}
+                            gutterBottom
+                            sx={{
+                              fontWeight: 700,
+                              color: theme.palette.common.white,
+                            }}
+                          >
+                            Here&apos;s what we found...
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            sx={{
+                              color: theme.palette.common.white,
+                            }}
+                          >
+                            <strong>
+                              We tried to find the most important areas of the document...
+                            </strong>
+                          </Typography>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -222,17 +252,25 @@ const About = () => {
               position={'relative'}
               top={0}
             >
-              <Grid item xs={12} md={9} style={{ display: 'flex' }}>
-                <Box style={{ width: (loading ? '100%' : '70%') }} className={classes.root}>{location.state.text}</Box>
-                <div style={{ width: '30%', marginLeft: (loading ? '0px' : '25px') }}>
-                  {loading ? (<></>) : (<div style={{ width: '100%' }}>
-                    {clauseBoxes(clauses)}
-                  </div>)}
-                </div>
-              </Grid>
+              {next ? (
+                <Grid item xs={12} md={9} style={{}}>
+                  <h1>... Great Lakes and the Lender agree that Great Lakes shall service all Loans covered by the Act that are made or purchased by the Lender, that are guaranteed by Great Lakes Higher Education Guaranty Corporation and that are submitted to Great Lakes by the Lender and accepted by Great Lakes for servicing... </h1>
+                  <h1>{emphasis}</h1>
+                </Grid>
+              ) : (
+                <Grid item xs={12} md={9} style={{ display: 'flex' }}>
+                  <Box style={{ width: (loading ? '100%' : '70%') }} className={classes.root}>{location.state.text}</Box>
+                  <div style={{ width: '30%', marginLeft: (loading ? '0px' : '25px') }}>
+                    {loading ? (<></>) : (<div style={{ width: '100%' }}>
+                      {clauseBoxes(clauses)}
+                    </div>)}
+                  </div>
+                </Grid>
+              )}
+
             </Container>
           </Box>
-        </Container>
+        </Container >
         <div
           style={{
             position: 'fixed',
@@ -259,6 +297,25 @@ const About = () => {
           >
             Back
           </Button>
+          <div style={{ width: '100%' }}></div>
+          {next && showNext ? (
+            <></>
+          ) : (
+            <Button
+              onClick={() => setNext(true)}
+              variant="outlined"
+              style={{
+                size: '100%',
+                color: 'white',
+                borderColor: 'white',
+                fontSize: '20px',
+                borderRadius: '4px',
+                height: '100%',
+              }}
+            >
+              Next
+            </Button>
+          )}
         </div>
       </Box >
     </motion.div >
