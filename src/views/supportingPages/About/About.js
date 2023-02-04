@@ -27,33 +27,40 @@ const useStyles = makeStyles({
   },
 });
 
+const clauseBoxes = (clauses) => {
+  return Object.keys(clauses).map((question, i) => {
+    return (
+      <div key={i}>
+        <strong>{question}</strong> <br />
+        <Typography>{clauses[question]}</Typography>
+      </div>
+    );
+  });
+};
+
 const About = () => {
   const theme = useTheme();
   const classes = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const [clauses, setClauses] = useState({});
 
-  async function parseText(text) {
+  const parseText = async (text) => {
     let ans = {};
     const context = removeSpecialCharacters(removeQuotes(text));
 
     const promises = commonQuestions.map(async (q) => {
       return cuad({ question: q, context: context }).then((res) => {
         const { start, end } = res;
-        ans[q] = [start, end];
-        return ans;
+        ans[q] = context.substring(start, end);
       });
     });
 
     await Promise.all(promises).then(() => {
-      Object.values(ans).map((res) => {
-        const start = res[0];
-        const end = res[1];
-        console.log(context.substring(start, end));
-      });
+      setClauses(ans);
     });
-  }
+  };
 
   const handleBack = () => {
     navigate('/contract-analysis', { state: { text: location.state.text } });
@@ -76,6 +83,7 @@ const About = () => {
       transition={{ duration: 1.2 }}
     >
       <Box>
+        {clauseBoxes(clauses)}
         <Container>
           <Box boxShadow={4} borderRadius={2}>
             <Box bgcolor={theme.palette.primary.main} borderRadius={2}>
