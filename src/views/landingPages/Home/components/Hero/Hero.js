@@ -60,6 +60,7 @@ const Hero = () => {
               variant="contained"
               color="primary"
               size="large"
+              style={{ fontSize: '18px' }}
               fullWidth={isMd ? false : true}
               onClick={() => navigate('/contract-analysis')}
             >

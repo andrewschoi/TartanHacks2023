@@ -18,8 +18,6 @@ const Features = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.5 }}>
-
-
         <Box>
           <Box
             component={Typography}
@@ -51,6 +49,7 @@ const Features = () => {
               href={'/contract-analysis'}
               target={'_blank'}
               variant="contained"
+              style={{ fontSize: '18px' }}
               color="primary"
               size="large"
               endIcon={
