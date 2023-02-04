@@ -24,7 +24,7 @@ export default async function cuad({ question, context }) {
 }
 
 export async function modelQuestion({ question, context }) {
-  const API_KEY = 'INSERT KEY HERE';
+  const API_KEY = 'insertkey';
 
   const response = await fetch(
     'https://api.openai.com/v1/engines/davinci/completions',

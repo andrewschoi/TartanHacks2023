@@ -143,7 +143,7 @@ const About = () => {
                           color: theme.palette.common.white,
                         }}
                       >
-                        Heres what we found...
+                        Here&apos;s what we found...
                       </Typography>
                       <Typography
                         gutterBottom
