@@ -23,7 +23,7 @@ export default async function cuad({ question, context }) {
   return JSON.parse(data);
 }
 
-const API_KEY = 'api key';
+const API_KEY = 'key';
 
 export async function modelQuestion({ question, context }) {
 

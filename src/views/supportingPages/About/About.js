@@ -31,9 +31,11 @@ const useStyles = makeStyles({
 const clauseBoxes = (clauses) => {
   return Object.keys(clauses).map((question, i) => {
     return (
-      <div key={i}>
-        <strong style={{ fontSize: '21px', paddingBottom: '5px' }}>{question}</strong> <br />
-        <Typography style={{ paddingBottom: '1em', paddingTop: '1em' }}>{clauses[question]}</Typography>
+      <div key={i} style={{ border: '1px solid black', borderRadius: '4px', marginTop: '10px' }}>
+        <div style={{ padding: '8px' }}>
+          <strong style={{ fontSize: '21px', paddingBottom: '5px' }}>{question}</strong> <br />
+          <Typography style={{ paddingTop: '1em' }}>{clauses[question]}</Typography>
+        </div>
       </div>
     );
   });
