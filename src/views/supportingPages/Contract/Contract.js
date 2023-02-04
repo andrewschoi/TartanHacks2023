@@ -7,7 +7,7 @@ import Container from 'common/Container';
 import { Button } from '@mui/material';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+//import { motion } from 'framer-motion';
 import './Contract.css';
 
 const Contract = () => {
@@ -33,12 +33,8 @@ const Contract = () => {
   };
 
   return (
-    <motion.div className="container text-center  bg-black"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1.0 }}>
-      <Box>
+    <div>
+      <Box data-aos={'fade-right'}>
         <Container>
           <Box boxShadow={4} borderRadius={2}>
             <Box bgcolor={theme.palette.primary.main} borderRadius={2}>
@@ -147,7 +143,7 @@ const Contract = () => {
           Analyze
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

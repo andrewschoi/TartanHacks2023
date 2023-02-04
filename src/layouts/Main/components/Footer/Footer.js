@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+//import Typography from '@mui/material/Typography';
 
 const Footer = () => (
   <Grid container spacing={2}>
@@ -17,7 +17,7 @@ const Footer = () => (
         </Box>
       </Box>
     </Grid>
-    <Grid item xs={12}>
+    {/* <Grid item xs={12}>
       <Typography
         align={'center'}
         variant={'subtitle2'}
@@ -26,7 +26,7 @@ const Footer = () => (
       >
         &copy; ContractShield. 2023
       </Typography>
-    </Grid>
+    </Grid> */}
   </Grid>
 );
 
