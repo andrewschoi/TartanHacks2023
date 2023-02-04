@@ -20,9 +20,10 @@ const Features = () => {
           gutterBottom
           align={'center'}
         >
-          A Document Aid,
+          {/* A Document Aid,
           <br />
-          For Everyone
+          For Everyone */}
+          Empowering Document Transparency for All.
         </Box>
         <Typography
           variant={'h6'}
@@ -30,10 +31,11 @@ const Features = () => {
           color={'textSecondary'}
           align={'center'}
         >
-          With tremendous strides in natural language processing,
+          {/* With tremendous strides in natural language processing,
           <br />
           you don't need thousands of dollars to understand what you're agreeing
-          to...
+          to... */}
+          Capitalizing on the cutting-edge advancements in natural language processing, we offer a cost-effective solution for comprehensive agreement analysis, eliminating the requirement for substantial financial outlays.
         </Typography>
         <Box marginTop={3} display={'flex'} justifyContent={'center'}>
           <Button
