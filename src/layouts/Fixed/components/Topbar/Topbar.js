@@ -18,12 +18,12 @@ const Topbar = ({
   const theme = useTheme();
   return (
     <Box
-      display={'flex'}
+      display={'none'}
       justifyContent={'space-between'}
       alignItems={'center'}
       width={'100%'}
     >
-      <Box display={'flex'} alignItems={'center'}>
+      <Box display={'none'} alignItems={'center'}>
         <Box marginRight={{ xs: 1, sm: 2 }} sx={{ display: { md: 'none', sm: 'block' } }}>
           <IconButton onClick={onSidebarOpen} aria-label="Menu">
             <MenuIcon />

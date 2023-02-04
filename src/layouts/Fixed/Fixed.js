@@ -31,21 +31,23 @@ const Fixed = ({
   };
 
   return (
-    <Box height="100%" overflow="hidden" width="100%">
+    <Box height="100%" overflow="hidden" width="100%" style={{ display: 'none' }}>
       <AppBar
         position={'fixed'}
         sx={{
           backgroundColor: theme.palette.background.paper,
+          display: 'none',
         }}
         elevation={0}
       >
-        <Container paddingY={{ xs: 1 / 2, sm: 1 }} maxWidth={{ md: '100%' }}>
+        <Container paddingY={{ xs: 1 / 2, sm: 1 }} maxWidth={{ md: '100%' }} style={{ display: 'none' }}>
           <Topbar
             onSidebarOpen={handleSidebarOpen}
             themeMode={themeMode}
             themeToggler={themeToggler}
             setThemePalette={setThemePalette}
             paletteType={paletteType}
+            style={{ display: 'none' }}
           />
         </Container>
         <Divider />

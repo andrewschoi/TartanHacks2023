@@ -32,7 +32,7 @@ const Fluid = ({
         }}
         elevation={0}
       >
-        <Container paddingY={{ xs: 1 / 2, sm: 1 }} maxWidth={'100%'}>
+        <Container paddingY={{ xs: 1 / 2, sm: 1 }} maxWidth={'100%'} style={{ display: 'none' }}>
           <Topbar
             onSidebarOpen={handleSidebarOpen}
             themeMode={themeMode}
