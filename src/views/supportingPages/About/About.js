@@ -47,7 +47,11 @@ const About = () => {
     });
 
     await Promise.all(promises).then(() => {
-      console.log(ans);
+      Object.values(ans).map((res) => {
+        const start = res[0];
+        const end = res[1];
+        console.log(context.substring(start, end));
+      });
     });
   }
 
@@ -64,16 +68,21 @@ const About = () => {
   }, []);
 
   return (
-    <motion.div className="container text-center  bg-black"
+    <motion.div
+      className="container text-center  bg-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1.2 }}>
+      transition={{ duration: 1.2 }}
+    >
       <Box>
         <Container>
           <Box boxShadow={4} borderRadius={2}>
             <Box bgcolor={theme.palette.primary.main} borderRadius={2}>
-              <Container paddingX={{ xs: 2, sm: 4 }} style={{ display: 'flex' }}>
+              <Container
+                paddingX={{ xs: 2, sm: 4 }}
+                style={{ display: 'flex' }}
+              >
                 <div>
                   <Typography
                     variant={'h3'}
@@ -85,11 +94,7 @@ const About = () => {
                   >
                     Heres what we found...
                   </Typography>
-                  {loading ? (
-                    <h1>WAIT</h1>
-                  ) : (
-                    <h1>done</h1>
-                  )}
+                  {loading ? <h1>WAIT</h1> : <h1>done</h1>}
                   <Typography
                     gutterBottom
                     sx={{
