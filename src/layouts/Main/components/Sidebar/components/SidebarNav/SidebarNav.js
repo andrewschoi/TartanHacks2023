@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
+//import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
@@ -18,7 +18,8 @@ const SidebarNav = ({ pages, onClose }) => {
   return (
     <Box>
       <Box
-        display={'flex'}
+        //display={'flex'}
+        style={{ paddingTop: '10px' }}
         justifyContent={'flex-end'}
         onClick={() => onClose()}
       >
@@ -34,36 +35,45 @@ const SidebarNav = ({ pages, onClose }) => {
                 variant="caption"
                 sx={{
                   fontWeight: 700,
+                  marginTop: '10px',
                   textTransform: 'uppercase',
+                  fontSize: '26px',
                   marginBottom: 1,
                   display: 'block',
                 }}
               >
                 {item.title}
               </Typography>
-              <Grid container spacing={1}>
-                {item.pages.map((p, i) => (
-                  <Grid item xs={6} key={i}>
-                    <Link
-                      variant="body2"
-                      component={'a'}
-                      href={p.href}
-                      color={activeLink === p.href ? 'primary' : 'textPrimary'}
-                      underline={'none'}
-                      sx={{
-                        fontWeight: activeLink === p.href ? 600 : 400,
-                        '&:hover': {
-                          textDecoration: 'none',
-                          color: theme.palette.primary.dark,
-                        },
-                      }}
-                      onClick={() => onClose()}
-                    >
-                      {p.title}
-                    </Link>
-                  </Grid>
-                ))}
-              </Grid>
+              {/* <Grid container spacing={1}> */}
+
+              {item.pages.map((p, i) => (
+                // <Grid item xs={6} key={i}>
+                <li key={i} style={{ display: 'flex' }}>
+                  <Link
+                    variant="body2"
+                    component={'a'}
+                    href={p.href}
+                    color={activeLink === p.href ? 'primary' : 'textPrimary'}
+                    underline={'none'}
+                    sx={{
+                      width: '100%',
+                      paddingBottom: '6px',
+                      fontWeight: activeLink === p.href ? 600 : 400,
+                      fontSize: '21px',
+                      '&:hover': {
+                        textDecoration: 'none',
+                        color: theme.palette.primary.dark,
+                      },
+                    }}
+                    onClick={() => onClose()}
+                  >
+                    {p.title}
+                  </Link>
+                </li>
+                //</Grid>
+              ))}
+
+              {/* </Grid> */}
             </Box>
           ))}
         </Box>
