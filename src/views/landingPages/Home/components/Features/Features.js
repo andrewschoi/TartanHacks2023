@@ -69,12 +69,12 @@ const Features = () => {
       </Box>
 
       <Box>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} style={{ marginTop: '40px' }}>
           {[
             {
               title: 'Student Loans',
               subtitle:
-                'Customize any part of our components to match your design needs.',
+                'Empowering informed decision making for student loan repayment options through simplified information and guidance.',
               icon: (
                 <svg
                   height={24}
@@ -96,7 +96,7 @@ const Features = () => {
             {
               title: 'Mortgages',
               subtitle:
-                'Optimized for multiple color modes. Use light or dark, your choice.',
+                'Streamlining and simplifying the home loan process with comprehensive guidance.',
               icon: (
                 <svg
                   height={24}
@@ -118,7 +118,7 @@ const Features = () => {
             {
               title: 'Purchase Agreements',
               subtitle:
-                'Designed with composition in mind. Compose new components with ease.',
+                'Ensuring informed and confident purchase decisions through detailed analysis and comprehensive understanding of agreements.',
               icon: (
                 <svg
                   height={24}
@@ -140,7 +140,7 @@ const Features = () => {
             {
               title: 'Data Plans',
               subtitle:
-                'Guaranteed to boost your productivity when building your app or website.',
+                'Maximizing data plan choices by comparing options, considering usage patterns and making informed decisions.',
               icon: (
                 <svg
                   height={24}
@@ -162,7 +162,7 @@ const Features = () => {
             {
               title: 'Terms & Services',
               subtitle:
-                'We continually deploy improvements and new updates to Webbee.',
+                'Enhancing clarity in service terms and conditions by providing in-depth analysis and comprehensive understanding.',
               icon: (
                 <svg
                   height={24}
@@ -184,7 +184,7 @@ const Features = () => {
             {
               title: 'Insurance',
               subtitle:
-                '6 months of free technical support to help you build your website faster.',
+                'Navigating insurance choices with confidence through comprehensive information and informed decision making.',
               icon: (
                 <svg
                   height={24}

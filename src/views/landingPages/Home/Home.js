@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from 'common/Container';
-import { Features, Footer, Hero, Highlights } from './components';
+import { Features, Footer, Hero } from './components';
 
 const Home = () => {
   const theme = useTheme();
@@ -13,13 +13,13 @@ const Home = () => {
           <Hero />
         </Container>
       </Box>
-      <Container>
+      <Container style={{ marginTop: '25px' }}>
         <Features />
       </Container>
 
-      <Container>
+      {/* <Container>
         <Highlights />
-      </Container>
+      </Container> */}
 
       <Container>
         <Footer />
