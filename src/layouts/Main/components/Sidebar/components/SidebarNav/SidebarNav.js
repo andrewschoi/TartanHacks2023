@@ -37,7 +37,7 @@ const SidebarNav = ({ pages, onClose }) => {
                   fontWeight: 700,
                   marginTop: '10px',
                   textTransform: 'uppercase',
-                  fontSize: '26px',
+                  fontSize: '45px',
                   marginBottom: 1,
                   display: 'block',
                 }}
@@ -57,9 +57,9 @@ const SidebarNav = ({ pages, onClose }) => {
                     underline={'none'}
                     sx={{
                       width: '100%',
-                      paddingBottom: '6px',
+                      paddingBottom: '15px',
                       fontWeight: activeLink === p.href ? 600 : 400,
-                      fontSize: '21px',
+                      fontSize: '28px',
                       '&:hover': {
                         textDecoration: 'none',
                         color: theme.palette.primary.dark,
