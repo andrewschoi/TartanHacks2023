@@ -29,7 +29,12 @@ const Contract = () => {
   };
 
   const handleNext = () => {
-    navigate('/page-about', { state: { text: text } });
+    if (text.length >= 100) {
+      navigate('/page-about', { state: { text: text } });
+    } else {
+      alert('Please enter at least 100 characters.');
+    }
+
   };
 
   return (
