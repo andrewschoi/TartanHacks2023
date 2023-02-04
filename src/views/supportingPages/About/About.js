@@ -74,33 +74,38 @@ const About = () => {
           <Box boxShadow={4} borderRadius={2}>
             <Box bgcolor={theme.palette.primary.main} borderRadius={2}>
               <Container paddingX={{ xs: 2, sm: 4 }} style={{ display: 'flex' }}>
-                <div>
-                  <Typography
-                    variant={'h3'}
-                    gutterBottom
-                    sx={{
-                      fontWeight: 700,
-                      color: theme.palette.common.white,
-                    }}
-                  >
-                    Heres what we found...
-                  </Typography>
+                <div style={{ width: '100%' }}>
                   {loading ? (
-                    <h1>WAIT</h1>
+                    <div style={{ justifyContent: 'center', display: 'flex', width: '100%', paddingTop: '10px' }}>
+                      <div style={{ width: '100%' }}></div>
+                      <img src="/assets/loading.gif" alt="loading" width="100" height="100" />
+                      <div style={{ width: '100%' }}></div>
+                    </div>
                   ) : (
-                    <h1>done</h1>
+                    <div>
+                      <Typography
+                        variant={'h3'}
+                        gutterBottom
+                        sx={{
+                          fontWeight: 700,
+                          color: theme.palette.common.white,
+                        }}
+                      >
+                        Heres what we found...
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        sx={{
+                          color: theme.palette.common.white,
+                        }}
+                      >
+                        <strong>
+                          We looked for important legal clauses, deadlines, and
+                          more...
+                        </strong>
+                      </Typography>
+                    </div>
                   )}
-                  <Typography
-                    gutterBottom
-                    sx={{
-                      color: theme.palette.common.white,
-                    }}
-                  >
-                    <strong>
-                      We looked for important legal clauses, deadlines, and
-                      more...
-                    </strong>
-                  </Typography>
                 </div>
               </Container>
               <Box
