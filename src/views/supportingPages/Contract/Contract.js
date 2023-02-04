@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -6,23 +6,22 @@ import Typography from '@mui/material/Typography';
 import Container from 'common/Container';
 import { Button } from '@mui/material';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-//import { makeStyles } from '@material-ui/core/styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Contract.css';
-
-// const useStyles = makeStyles({
-//   root: {
-//     fontSize: '20px',
-//     width: '100%',
-//     fontFamily: 'Arial, sans-serif',
-//   },
-// });
 
 const Contract = () => {
   const theme = useTheme();
-  //const classes = useStyles();
   const [text, setText] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+  const input = useRef();
+
+  useEffect(() => {
+    if (location.state) {
+      setText(location.state.text);
+      input.current.value = location.state.text;
+    }
+  }, []);
 
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -90,6 +89,7 @@ const Contract = () => {
             >
               <Grid item xs={12} md={9}>
                 <TextareaAutosize
+                  ref={input}
                   style={{ borderColor: theme.palette.primary.main }}
                   className="field cursor"
                   placeholder="Copy and paste contract here..."

@@ -33,6 +33,7 @@ async function parseText(text) {
     console.log(ans);
   });
 }
+
 const useStyles = makeStyles({
   root: {
     fontSize: '20px',
@@ -46,6 +47,10 @@ const About = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleBack = () => {
+    navigate('/contract-analysis', { state: { text: location.state.text } });
+  };
 
   useEffect(() => {
     parseText(location.state.text);
@@ -122,7 +127,7 @@ const About = () => {
         }}
       >
         <Button
-          onClick={() => navigate('/contract-analysis')}
+          onClick={() => handleBack()}
           variant="outlined"
           style={{
             size: '100%',
