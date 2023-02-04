@@ -21,6 +21,7 @@ function removeQuotes(str) {
 async function parseText(text) {
   let ans = {};
   const context = removeSpecialCharacters(removeQuotes(text));
+
   const promises = commonQuestions.map(async (q) => {
     return cuad({ question: q, context: context }).then((res) => {
       const { start, end } = res;
