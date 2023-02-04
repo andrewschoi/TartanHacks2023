@@ -79,6 +79,11 @@ const About = () => {
                 >
                   Heres what we found...
                 </Typography>
+                {loading ? (
+                  <h1>WAIT</h1>
+                ) : (
+                  <h1>done</h1>
+                )}
                 <Typography
                   gutterBottom
                   sx={{
