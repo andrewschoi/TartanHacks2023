@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -18,7 +18,6 @@ function removeQuotes(str) {
   return str.replace(/['"]/g, '');
 }
 
-
 const useStyles = makeStyles({
   root: {
     fontSize: '20px',
@@ -32,6 +31,7 @@ const About = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
   async function parseText(text) {
     let ans = {};
@@ -55,7 +55,11 @@ const About = () => {
   };
 
   useEffect(() => {
-    parseText(location.state.text);
+    const initalizeState = async () => {
+      await parseText(location.state.text);
+      setLoading(false);
+    };
+    initalizeState();
   }, []);
 
   return (
