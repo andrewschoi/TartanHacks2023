@@ -83,7 +83,6 @@ const About = () => {
       transition={{ duration: 1.2 }}
     >
       <Box>
-        {clauseBoxes(clauses)}
         <Container>
           <Box boxShadow={4} borderRadius={2}>
             <Box bgcolor={theme.palette.primary.main} borderRadius={2}>
@@ -159,8 +158,13 @@ const About = () => {
               position={'relative'}
               top={0}
             >
-              <Grid item xs={12} md={9}>
-                <Box className={classes.root}>{location.state.text}</Box>
+              <Grid item xs={12} md={9} style={{ display: 'flex' }}>
+                <Box style={{ width: (loading ? '100%' : '70%') }} className={classes.root}>{location.state.text}</Box>
+                <div style={{ width: '30%' }}>
+                  {loading ? (<></>) : (<div style={{ width: '100%' }}>
+                    {clauseBoxes(clauses)}
+                  </div>)}
+                </div>
               </Grid>
             </Container>
           </Box>
@@ -192,8 +196,8 @@ const About = () => {
             Back
           </Button>
         </div>
-      </Box>
-    </motion.div>
+      </Box >
+    </motion.div >
   );
 };
 
