@@ -24,7 +24,7 @@ export default async function cuad({ question, context }) {
 }
 
 export async function modelQuestion({ question, context }) {
-  const API_KEY = 'insertkey';
+  const API_KEY = 'insert key';
 
   const response = await fetch(
     'https://api.openai.com/v1/engines/davinci/completions',
@@ -39,7 +39,7 @@ export async function modelQuestion({ question, context }) {
           'Pretend you are a lawyer tasked with concisely answering another human this question:' +
           question +
           '. Based on this document: ' +
-          context.substring(Math.min(2000, context.length)),
+          context.substring(Math.min(1900, context.length)),
         max_tokens: 50,
       }),
     },

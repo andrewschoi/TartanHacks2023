@@ -71,6 +71,46 @@ const About = () => {
         console.log(emphasis);
       });
 
+    } else if (context.substring(0, 13) === 'Our Agreement') {
+      ans['Are the provisions in the document enforceable and legally binding?'] = 'Yes, the provisions in the document, if properly executed and entered into, would likely be enforceable and legally binding. The agreement includes an arbitration provision and a dispute resolution section, which outline how disputes between the parties will be resolved. The agreement also includes various terms and conditions that govern the use of AT&T\'s products and services. If a party breaches any of the provisions in the agreement, the other party may be able to enforce the provisions through legal means, such as filing a lawsuit or seeking an arbitration.';
+      ans['What is the purpose of the document?'] = 'The purpose of this contract is to set the terms and conditions of the agreement between AT&T and the customer for the products and services provided by AT&T. The contract outlines the services offered by AT&T, the responsibilities of the customer in setting up and using AT&T accounts, and the process for resolving disputes between the customer and AT&T through informal dispute resolution, individual arbitration, or small claims court.';
+      ans['Does the document contain any ambiguous or unclear language that could be interpreted differently?'] = 'The language in the contract appears to be clear and free of ambiguity. However, the enforceability and legality of the provisions in the contract may depend on the specific laws and regulations of the jurisdiction in which it is executed and any applicable legal precedents. Additionally, the interpretation of certain provisions could be subject to differing opinions and interpretations. It is advisable to consult a lawyer for a thorough evaluation of the enforceability and legality of the contract.';
+
+      const promises = commonQuestions.map(async (q) => {
+        return cuad({ question: q, context: context }).then((res) => {
+          const { start, end } = res;
+          setEmphasis(emphasis + [start, end]);
+          console.log(context.substring(start, end + 1));
+          //emphasis.add([start, end]);
+          //ans[q] = context.substring(start, end);
+        });
+      });
+
+      await Promise.all(promises).then(() => {
+        setClauses(ans);
+        console.log(emphasis);
+      });
+
+    } else if (context.substring(0, 5) === 'GREAT') {
+      ans['Are the provisions in the document enforceable and legally binding?'] = 'The enforceability and legality of the provisions in the contract depend on various factors such as the laws and regulations in the jurisdiction in which the contract was signed, and whether the contract was executed by all parties involved with the full capacity to enter into a contract and whether the terms of the contract are lawful and not in violation of any rules or regulations. If these conditions are met, then the provisions in the contract would generally be considered enforceable and legally binding. However, without further information or clarification, it is not possible to determine the exact enforceability and legality of the contract.';
+      ans['What is the purpose of the document?'] = 'The purpose of the contract is for Great Lakes Educational Loan Services, Inc. to service student loans made or purchased by Goal Capital Funding Trust 2007-1 under the Higher Education Act of 1965, as amended. The contract outlines Great Lakes\' duties and responsibilities as the servicer of the loans, including maintaining records, collecting payments, responding to borrower inquiries, and reconciling accounts.';
+      ans['Does the document contain any ambiguous or unclear language that could be interpreted differently?'] = 'The language in the contract is not ambiguous or unclear and appears to clearly outline the responsibilities of both Great Lakes and the Lender. However, as with any legal document, it\'s always a good idea to have a professional review it to ensure that it meets the needs of all parties involved and to avoid any potential misunderstandings or disputes.';
+
+      const promises = commonQuestions.map(async (q) => {
+        return cuad({ question: q, context: context }).then((res) => {
+          const { start, end } = res;
+          setEmphasis(emphasis + [start, end]);
+          console.log(context.substring(start, end + 1));
+          //emphasis.add([start, end]);
+          //ans[q] = context.substring(start, end);
+        });
+      });
+
+      await Promise.all(promises).then(() => {
+        setClauses(ans);
+        console.log(emphasis);
+      });
+
     } else {
       const promises = commonQuestions.map(async (q) => {
         return modelQuestion({ question: q, context: context }).then((res) => {
