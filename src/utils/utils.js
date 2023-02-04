@@ -24,23 +24,27 @@ export default async function cuad({ question, context }) {
 }
 
 export async function modelQuestion({ question, context }) {
-  const API_KEY = 'insert key';
+  const API_KEY = 'INSERT KEY HERE';
 
-  const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
+  const response = await fetch(
+    'https://api.openai.com/v1/engines/davinci/completions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt:
+          'Pretend you are a lawyer tasked with concisely answering another human this question:' +
+          question +
+          '. Based on this document: ' +
+          context.substring(Math.min(2000, context.length)),
+        max_tokens: 50,
+      }),
     },
-    body: JSON.stringify({
-      prompt: 'answer the following question: ' + question + ' based on this document: ' + context,
-      max_tokens: 50,
-    }),
-  },
   );
   const data = await response.json();
   console.log(data);
-  return data['choices'][0].text.substring(1);
+  return data['choices'][0].text;
 }
-
-
