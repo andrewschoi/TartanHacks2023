@@ -8,10 +8,10 @@ export const pages = [
         href: '/',
       },
 
-      {
-        title: 'About',
-        href: '/page-about',
-      },
+      // {
+      //   title: 'About',
+      //   href: '/page-about',
+      // },
 
       {
         title: 'Pricing',

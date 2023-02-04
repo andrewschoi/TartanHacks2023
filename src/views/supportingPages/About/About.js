@@ -18,22 +18,6 @@ function removeQuotes(str) {
   return str.replace(/['"]/g, '');
 }
 
-async function parseText(text) {
-  let ans = {};
-  const context = removeSpecialCharacters(removeQuotes(text));
-
-  const promises = commonQuestions.map(async (q) => {
-    return cuad({ question: q, context: context }).then((res) => {
-      const { start, end } = res;
-      ans[q] = [start, end];
-      return ans;
-    });
-  });
-
-  await Promise.all(promises).then(() => {
-    console.log(ans);
-  });
-}
 
 const useStyles = makeStyles({
   root: {
@@ -48,6 +32,23 @@ const About = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+
+  async function parseText(text) {
+    let ans = {};
+    const context = removeSpecialCharacters(removeQuotes(text));
+
+    const promises = commonQuestions.map(async (q) => {
+      return cuad({ question: q, context: context }).then((res) => {
+        const { start, end } = res;
+        ans[q] = [start, end];
+        return ans;
+      });
+    });
+
+    await Promise.all(promises).then(() => {
+      console.log(ans);
+    });
+  }
 
   const handleBack = () => {
     navigate('/contract-analysis', { state: { text: location.state.text } });
