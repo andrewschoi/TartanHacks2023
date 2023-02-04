@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -10,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 
 const Features = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   return (
     <Box>
@@ -46,7 +48,7 @@ const Features = () => {
           <Box marginTop={3} display={'flex'} justifyContent={'center'}>
             <Button
               component={'a'}
-              href={'/contract-analysis'}
+              onClick={() => navigate('/contract-analysis')}
               target={'_blank'}
               variant="contained"
               style={{ fontSize: '18px' }}

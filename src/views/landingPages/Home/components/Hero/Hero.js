@@ -18,9 +18,9 @@ const Hero = () => {
 
   return (
     <Grid container spacing={4}>
-      <Grid item container alignItems={'center'} xs={12} md={6}>
+      <Grid item container alignItems={'center'} xs={12} md={6} style={{ marginTop: '50px' }}>
         <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-          <Box marginBottom={2}>
+          <Box marginBottom={2} >
             <Typography
               variant="h2"
               color="textPrimary"
@@ -77,7 +77,7 @@ const Hero = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <Box height={'100%'} width={'100%'} maxHeight={600}>
+          <Box height={'100%'} width={'100%'} maxHeight={600} style={{ paddingTop: '10px' }}>
             <img src="/assets/landing-image.png" alt="contract shield" width="50%" style={{ float: 'right' }} />
             {/* <RocketIllustration width={'100%'} height={'100%'} /> */}
           </Box>
