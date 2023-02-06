@@ -1,6 +1,6 @@
 # ContractShield
 
-A legal aid that aims to simplify complex legal documents including student loans, mortgages, purchase agreements, data plans, etc. for lower-income audiences, or those with inequitable access to legal services
+A legal aid for document inference using BERT language model. Won "Most Disruptive : Product" and 2nd overall at TartanHacks 2023 (hosted by CMU), Pittsburg's largest annual hackathon with over 100 participating team. 
 
 # Tech Stack
 Frontend: React
